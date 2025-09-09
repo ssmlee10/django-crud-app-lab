@@ -7,8 +7,7 @@ def home(request):
   return HttpResponse('<h1>Hello, this is my movie app!</h1>')
 
 def about(request):
-  return HttpResponse('<h1>This is the about page</h1>')
-  # return render(request, 'about.html')
+  return render(request, 'about.html')
 
 # def movies_index(request):
 #   movies = Movie.object.all()
