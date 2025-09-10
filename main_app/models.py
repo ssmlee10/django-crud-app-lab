@@ -14,6 +14,7 @@ class Movie(models.Model):
   title = models.CharField(max_length=100)
   director = models.CharField(max_length=100)
   year = models.IntegerField()
+  description = models.TextField(max_length=250)
   genre = models.CharField(
     choices = GENRES,
     default = GENRES[0][0]
