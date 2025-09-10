@@ -22,3 +22,6 @@ class Movie(models.Model):
   rating = models.IntegerField(
     validators=[MinValueValidator(0), MaxValueValidator(10)]
   )
+
+  def __str__(self):
+    return self.title
