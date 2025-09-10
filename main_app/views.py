@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Movie
 
 # import HttpResonse to send text-based responses
 from django.http import HttpResponse
@@ -25,5 +26,5 @@ def about(request):
 
 def movie_index(request):
   # this line brings in movies from the database
-  # movies = Movie.object.all()
+  movies = Movie.objects.all()
   return render(request, 'movies/index.html', {'movies': movies})
