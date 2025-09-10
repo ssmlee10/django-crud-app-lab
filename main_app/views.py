@@ -24,5 +24,6 @@ def about(request):
   return render(request, 'about.html')
 
 def movie_index(request):
-  movies = Movie.object.all()
+  # this line brings in movies from the database
+  # movies = Movie.object.all()
   return render(request, 'movies/index.html', {'movies': movies})
