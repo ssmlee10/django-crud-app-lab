@@ -6,17 +6,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/popcornLogo.png' %}"/>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'images/popcornLogo.png' %}"
+    />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <title>Popcorn Movie App</title>
-    {% block head %} 
-    {% endblock %}
+    {% block head %} {% endblock %}
   </head>
   <body>
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="../../static/images/popcornLogo.png" alt="My Movie App logo" />
+          <img
+            src="../../static/images/popcornLogo.png"
+            alt="My Movie App logo"
+          />
         </a>
       </div>
       <nav>
@@ -26,9 +32,6 @@
         </ul>
       </nav>
     </header>
-    <main>
-     {% block content %} 
-     {% endblock %}
-     </main>
+    <main>{% block content %} {% endblock %}</main>
   </body>
 </html>

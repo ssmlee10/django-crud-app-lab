@@ -12,9 +12,9 @@ class Movie:
     self.rating = rating
 
 movies = [
-  Movie('Kpop Demon Hunters', 'Maggie Kang', 2025, 'Animation/ Action', 10.0),
-  Movie("Parasite", "Bong Joon-ho", 2019, "Thriller/Drama", 8.6),
-  Movie("Train to Busan", "Yeon Sang-ho", 2016, "Action/Horror", 7.6),
+  Movie('Kpop Demon Hunters', 'Maggie Kang', 2025, 'Animation', 10.0),
+  Movie("Parasite", "Bong Joon-ho", 2019, "Thriller", 8.6),
+  Movie("Train to Busan", "Yeon Sang-ho", 2016, "Action", 7.6),
 ]
 
 def home(request):
@@ -23,6 +23,6 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
-def movies_index(request):
+def movie_index(request):
   movies = Movie.object.all()
   return render(request, 'movies/index.html', {'movies': movies})
