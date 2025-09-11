@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/movies/movie-detail.css' %}" />
+{% endblock %} {% block content %}
+<section class="cat-container">
+  <div class="cat-img">
+    <img src="{% static 'images/movieSlate.png' %}" alt="Movie card" class="movieCard"/>
+  </div>
+  <div class="cat-details">
+    <h1>{{ movie.title }}</h1>
+    <h2>Release Year: {{ movie.year }}</h2>
+    <div class="movieDescrip">
+      <p>{{ movie.description }}</p>
+     <p>Genre: {{ movie.genre }}</p>
+    </div>
+    <p>Rating: {{ movie.rating }}</p>
+  </div>
+</section>
+{% endblock %}
