@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Movie
 
 # import HttpResonse to send text-based responses
@@ -23,3 +23,11 @@ def movie_detail(request, movie_id):
 class MovieCreate(CreateView):
   model = Movie
   fields = '__all__'
+
+class MovieUpdate(UpdateView):
+  model = Movie
+  field = '__all__'
+
+class MovieDelete(DeleteView):
+  model = Movie
+  success_url = '/movies/'
