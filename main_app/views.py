@@ -4,20 +4,6 @@ from .models import Movie
 # import HttpResonse to send text-based responses
 from django.http import HttpResponse
 
-# class Movie:
-#   def __init__(self, title, director, year, genre, rating):
-#     self.title = title
-#     self.director = director
-#     self.year = year
-#     self.genre = genre
-#     self.rating = rating
-
-# movies = [
-#   Movie('Kpop Demon Hunters', 'Maggie Kang', 2025, 'Animation', 10.0),
-#   Movie("Parasite", "Bong Joon-ho", 2019, "Thriller", 8.6),
-#   Movie("Train to Busan", "Yeon Sang-ho", 2016, "Action", 7.6),
-# ]
-
 def home(request):
   return render(request, 'home.html')
 
@@ -28,3 +14,7 @@ def movie_index(request):
   # this line brings in movies from the database
   movies = Movie.objects.all()
   return render(request, 'movies/index.html', {'movies': movies})
+
+def movie_detail(request, movie_id):
+  movie = Movie.objects.get(id=movie_id)
+  return render(request, 'movies/detail.html', {'movie': movie})

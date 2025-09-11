@@ -12,6 +12,7 @@
 <section class="card-container">
   {% for movie in movies %}
   <div class="card">
+    <a href="{% url 'movie-detail' movie.id %}">
     <div class="card-content">
       <div class="card-img-container">
         <img
@@ -22,6 +23,7 @@
       <h2 class="card-title">{{ movie.title }}</h2>
       <p>A {{ movie.genre }} movie.</p>
     </div>
+  </a>
   </div>
   {% endfor %}
 </section>
