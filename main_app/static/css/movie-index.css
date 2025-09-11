@@ -1,8 +1,18 @@
+.movieCard{
+  width: 220px;
+  height: auto;
+}
+
 .card-container {
   padding: 0 30px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.card-img-container {
+  display: flex;
+  justify-content: center;
 }
 
 .card {

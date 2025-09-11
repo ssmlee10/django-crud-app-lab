@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
 <link
   rel="stylesheet"
-  href="{% static 'css/movies/movie-index.css' %}"
+  href="{% static 'css/movie-index.css' %}"
 />
 {% endblock %} {% block content %}
 
@@ -16,7 +16,7 @@
       <div class="card-img-container">
         <img
           src="{% static 'images/movieCard.png' %}"
-          alt="A movie card" class="logo"
+          alt="A movie card" class="movieCard"
         />
       </div>
       <h2 class="card-title">{{ movie.title }}</h2>
