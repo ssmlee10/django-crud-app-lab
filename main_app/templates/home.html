@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/home.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<section class="logo-container">
+  <div class="cat-container">
+    <img
+      src="{% static 'images/popcornLogo.png' %}"
+      alt="Popcorn Movie App Logo" class="homeLogo"
+    />
+  </div>
+<h1 class="popcornText">Popcorn Movie App</h1>
+</section>
+
+{% endblock %}
