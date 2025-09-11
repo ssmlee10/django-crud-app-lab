@@ -7,15 +7,24 @@ GENRES = (
   ('COMEDY', 'Comedy'),
   ('DRAMA', 'Drama'),
   ('HORROR', 'Horror'),
+  ('ANIMATION', 'Animation'),
+  ('THRILLER', 'Thriller'),
+  ('ROMANCE', 'Romance'),
+  ('MYSTERY', 'Mystery'),
+  ('CRIME', 'Crime'),
+  ('FANTASY', 'Fantasy'),
+  ('HISTORICAL', 'Historical'),
+  ('WAR', 'War'),
+  ('SPORTS', 'Sports'),
   ('SCI-FI', 'Sci-Fi'),
 )
 
 class Movie(models.Model):
   title = models.CharField(max_length=100)
-  director = models.CharField(max_length=100)
   year = models.IntegerField()
   description = models.TextField(max_length=250)
   genre = models.CharField(
+    max_length=20,
     choices = GENRES,
     default = GENRES[0][0]
   )
@@ -25,3 +34,6 @@ class Movie(models.Model):
 
   def __str__(self):
     return self.title
+  
+  def get_absolute_url(self):
+    return reverse('movie-detail', kwargs={'movie_id': self.id})

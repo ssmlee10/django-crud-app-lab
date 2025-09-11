@@ -10,9 +10,13 @@
     <h2>Release Year: {{ movie.year }}</h2>
     <div class="movieDescrip">
       <p>{{ movie.description }}</p>
-     <p>Genre: {{ movie.genre }}</p>
     </div>
+      <div class="movieDescrip">
+     <p>Genre: {{ movie.get_genre_display }}</p>
+    </div>
+    <div class="movieDescrip">
     <p>Rating: {{ movie.rating }}</p>
+    </div>
   </div>
 </section>
 {% endblock %}
