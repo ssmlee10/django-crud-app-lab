@@ -6,7 +6,11 @@
 {% block content %}
 
 <div class="page-header">
+  {% if movie %}
+  <h1>Edit {{ movie.title }}</h1>
+  {% else %}
   <h1>Add a Movie</h1>
+  {% endif %}
   <img src="{% static 'images/directorChair.png' %}" alt="Director's chair doodle" />
 </div>
 </div>

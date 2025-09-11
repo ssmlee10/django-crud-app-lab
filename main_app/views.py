@@ -26,7 +26,7 @@ class MovieCreate(CreateView):
 
 class MovieUpdate(UpdateView):
   model = Movie
-  field = '__all__'
+  fields = '__all__'
 
 class MovieDelete(DeleteView):
   model = Movie
