@@ -25,12 +25,23 @@
   </div>
 </section>
 
+
+
+
 <!-- Existing cat-container above -->
 <div class="feedings-toy-container">
   <section class="feedings">
     <div class="subsection-title">
       <h2>Actors</h2>
     </div>
+    <h3>Add an Actor</h3>
+<!-- Add just above the feedings table -->
+<form action="{% url 'add-actor' movie.id %}" method="post" class="subsection-content" autocomplete="off">
+  {% csrf_token %} 
+  {{ actor_form.as_p }}
+  <button type="submit" class="btn submit">Add Actor</button>
+</form>
+
     <table>
       <thead>
         <tr>

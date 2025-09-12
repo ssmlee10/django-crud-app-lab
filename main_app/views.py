@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Movie
+from .forms import ActorForm
 
 # import HttpResonse to send text-based responses
 from django.http import HttpResponse
@@ -18,7 +19,8 @@ def movie_index(request):
 
 def movie_detail(request, movie_id):
   movie = Movie.objects.get(id=movie_id)
-  return render(request, 'movies/detail.html', {'movie': movie})
+  actor_form = ActorForm()
+  return render(request, 'movies/detail.html', {'movie': movie, 'actor_form': actor_form})
 
 class MovieCreate(CreateView):
   model = Movie
@@ -31,3 +33,11 @@ class MovieUpdate(UpdateView):
 class MovieDelete(DeleteView):
   model = Movie
   success_url = '/movies/'
+
+def add_actor(request, movie_id):
+    form = ActorForm(request.POST)
+    if form.is_valid():
+        new_actor = form.save(commit=False)
+        new_actor.movie_id = movie_id
+        new_actor.save()
+    return redirect('movie-detail', movie_id=movie_id)
