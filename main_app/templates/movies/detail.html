@@ -42,6 +42,8 @@
   <button type="submit" class="btn submit">Add Actor</button>
 </form>
 
+<h3>Cast</h3>
+{% if movie.actor_set.all.count %}
     <table>
       <thead>
         <tr>
@@ -52,12 +54,17 @@
       <tbody>
         {% for actor in movie.actor_set.all %}
           <tr>
-            <td>{{actor.name}}</td>
-            <td>{{actor.role}}</td>
+            <td>{{ actor.name }}</td>
+            <td>{{ actor.role }}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+      <div class="subsection-content">
+    <p>⚠️ {{ movie.title }} has no cast yet!</p>
+  </div>
+{% endif %}
   </section>
 </div>
 
