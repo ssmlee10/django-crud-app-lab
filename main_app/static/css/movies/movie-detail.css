@@ -164,7 +164,7 @@
 .feedings th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
-  border-bottom: rgb(36, 116, 248) solid 2px;
+  border-bottom: rgb(234, 14, 14) solid 2px;
 }
 
 .feedings tr:nth-child(even) {

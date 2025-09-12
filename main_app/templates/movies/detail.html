@@ -24,4 +24,30 @@
     </div>
   </div>
 </section>
+
+<!-- Existing cat-container above -->
+<div class="feedings-toy-container">
+  <section class="feedings">
+    <div class="subsection-title">
+      <h2>Actors</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for actor in movie.actor_set.all %}
+          <tr>
+            <td>{{actor.name}}</td>
+            <td>{{actor.role}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
 {% endblock %}
