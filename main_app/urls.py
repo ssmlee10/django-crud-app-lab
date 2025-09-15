@@ -11,4 +11,5 @@ urlpatterns = [
   path('movies/<int:pk>/delete', views.MovieDelete.as_view(), name='movie-delete'),
   path('movies/<int:movie_id>/add-actor/', views.add_actor, name='add-actor'),
   path('accounts/', include('django.contrib.auth.urls')),
+  path('accounts/signup/', views.signup, name='signup'),
 ]

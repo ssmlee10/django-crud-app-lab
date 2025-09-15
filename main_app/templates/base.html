@@ -19,7 +19,11 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="{% static 'images/popcornLogo.png' %}" alt="Popcorn Movie App logo" class="logo" />
+          <img
+            src="{% static 'images/popcornLogo.png' %}"
+            alt="Popcorn Movie App logo"
+            class="logo"
+          />
         </a>
         <h1>Popcorn Movie App</h1>
       </div>
@@ -29,6 +33,12 @@
           <li><a href="{% url 'movie-index' %}">All Movies</a></li>
           <li><a href="{% url 'movie-create' %}">Add a Movie</a></li>
           <li><a href="{% url 'about'%}">About</a></li>
+          <li>
+            <form id="logout-form" method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit">Log out</button>
+            </form>
+          </li>
           {% else %}
           <li><a href="{% url 'about'%}">About</a></li>
           <li><a href="{% url 'home' %}">Login</a></li>

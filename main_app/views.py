@@ -3,6 +3,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Movie
 from .forms import ActorForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 # import HttpResonse to send text-based responses
 from django.http import HttpResponse
@@ -26,6 +28,12 @@ def movie_detail(request, movie_id):
 class MovieCreate(CreateView):
   model = Movie
   fields = '__all__'
+def form_valid(self, form):
+  # Assign the logged in user (self.request.user)
+  form.instance.user = self.request.user  
+  # form.instance is the movie
+  # Let the CreateView do its job as usual
+  return super().form_valid(form)
 
 class MovieUpdate(UpdateView):
   model = Movie
@@ -42,3 +50,17 @@ def add_actor(request, movie_id):
         new_actor.movie_id = movie_id
         new_actor.save()
     return redirect('movie-detail', movie_id=movie_id)
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('movie-index')
+  else:
+    error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
