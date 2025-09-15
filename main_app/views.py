@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Movie
 from .forms import ActorForm
+from django.contrib.auth.views import LoginView
 
 # import HttpResonse to send text-based responses
 from django.http import HttpResponse
 
-def home(request):
-  return render(request, 'home.html')
+class Home(LoginView):
+  template_name = 'home.html'
 
 def about(request):
   return render(request, 'about.html')
