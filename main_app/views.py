@@ -5,6 +5,8 @@ from .forms import ActorForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # import HttpResonse to send text-based responses
 from django.http import HttpResponse
@@ -15,17 +17,18 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def movie_index(request):
-  # this line brings in movies from the database
-  movies = Movie.objects.all()
+  movies = Movie.objects.filter(user=request.user)
   return render(request, 'movies/index.html', {'movies': movies})
 
+@login_required
 def movie_detail(request, movie_id):
   movie = Movie.objects.get(id=movie_id)
   actor_form = ActorForm()
   return render(request, 'movies/detail.html', {'movie': movie, 'actor_form': actor_form})
 
-class MovieCreate(CreateView):
+class MovieCreate(LoginRequiredMixin, CreateView):
   model = Movie
   fields = '__all__'
 def form_valid(self, form):
@@ -35,14 +38,15 @@ def form_valid(self, form):
   # Let the CreateView do its job as usual
   return super().form_valid(form)
 
-class MovieUpdate(UpdateView):
+class MovieUpdate(LoginRequiredMixin, UpdateView):
   model = Movie
   fields = '__all__'
 
-class MovieDelete(DeleteView):
+class MovieDelete(LoginRequiredMixin, DeleteView):
   model = Movie
   success_url = '/movies/'
 
+@login_required
 def add_actor(request, movie_id):
     form = ActorForm(request.POST)
     if form.is_valid():
