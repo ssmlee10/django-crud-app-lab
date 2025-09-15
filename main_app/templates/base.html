@@ -25,9 +25,14 @@
       </div>
       <nav>
         <ul>
+          {% if user.is_authenticated %}
           <li><a href="{% url 'movie-index' %}">All Movies</a></li>
           <li><a href="{% url 'movie-create' %}">Add a Movie</a></li>
           <li><a href="{% url 'about'%}">About</a></li>
+          {% else %}
+          <li><a href="{% url 'about'%}">About</a></li>
+          <li><a href="{% url 'home' %}">Login</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>
